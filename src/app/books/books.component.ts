@@ -1,17 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent  {
+export class BooksComponent {
+  @Input() parentInput: any;
+  @Input() title: string = "gg";
+  @Input() name: string;
+  @Output() testString: EventEmitter<string> = new EventEmitter();
+  
+  @Input() image: string =
+    'https://www.rd.com/wp-content/uploads/2019/11/shutterstock_509582812-e1574100998595.jpg';
+  
+    onButtonClick(Title,Author){
+      this.testString.emit(Title + " by " + Author)
+      }
+      
+    }
+  
 
-  books = [
-    { id: 1, title: 'Ulysses', author: 'James Joyce', available: true },
-    { id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway', available: false },
-    { id: 3, title: 'I Know Why the Caged Bird Sings', author: 'Maya Angelou', available: true },
-    { id: 4, title: 'Moby Dick', author: 'Herman Melville', available: true }
-];
-
-}
+     
